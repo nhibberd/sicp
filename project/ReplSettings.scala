@@ -6,10 +6,9 @@ object ReplSettings {
 
   lazy val all = Seq[Sett](
     initialCommands := """
-                         |import argonaut._
+                         |import sicp._
                          |import scalaz._
                          |import Scalaz._
-                         |import Argonaut._
                        """.stripMargin
   )
 }

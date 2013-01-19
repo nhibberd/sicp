@@ -7,7 +7,7 @@ object build extends Build {
   type Sett = Project.Setting[_]
 
   val base = Defaults.defaultSettings ++ ScalaSettings.all ++ Seq[Sett](
-      organization := "io.argonaut"
+      organization := "sicp"
     , version := "6.0-SNAPSHOT"
   )
 
@@ -20,37 +20,16 @@ object build extends Build {
   val jackson = "com.fasterxml.jackson.core" % "jackson-core" % "2.1.1"
 
 
-  val argonaut = Project(
-    id = "argonaut"
+  val sicp = Project(
+    id = "sicp"
   , base = file(".")
   , settings = base ++ ReplSettings.all ++ PublishSettings.all ++ InfoSettings.all ++ Seq[Sett](
-      name := "argonaut"
+      name := "sicp"
     , libraryDependencies <++= onVersion(
         all = Seq(scalaz, scalacheck)
       , on292 = Seq(specs2_1_12_3)
       , on210 = Seq(specs2_1_13)
       )
-    )
-  )
-
-  val benchmark = Project(
-    id = "benchmark"
-  , base = file("benchmark")
-  , dependencies = Seq(argonaut)
-  , settings = base ++ Seq[Sett](
-      name := "argonaut-benchmark"
-    , fork in run := true
-    , libraryDependencies ++= Seq(caliper, liftjson, jackson)
-    , javaOptions in run <++= (fullClasspath in Runtime) map { cp => Seq("-cp", sbt.Build.data(cp).mkString(":")) }
-    )
-  )
-
-  val doc = Project(
-    id = "doc"
-  , base = file("doc")
-  , dependencies = Seq(argonaut)
-  , settings = base ++ Seq[Sett](
-      name := "argonaut-doc"
     )
   )
 }

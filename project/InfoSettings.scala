@@ -8,10 +8,10 @@ object InfoSettings {
 
   val versioninfo = sourceGenerators in Compile <+= (sourceManaged in Compile, version, name) map { (d, v, n) =>
     val file = d / "info.scala"
-    IO.write(file, """package argonaut
+    IO.write(file, """package sicp
                      |object Info {
                      |  val version = "%s"
-                     |  val name = "argonaut"
+                     |  val name = "sicp"
                      |}
                      |""".stripMargin.format(v))
     Seq(file)
