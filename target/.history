@@ -1,0 +1,8 @@
+update
+exit
+~compile
+13
+~compile
+ls
+~compile
+-h
