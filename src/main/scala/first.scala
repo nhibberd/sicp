@@ -4,7 +4,5 @@ object HelloScala {
   	var varr = "asd";
     println(varr + " Hello, Scala! " + haha)
 
-
-
   }
 }
