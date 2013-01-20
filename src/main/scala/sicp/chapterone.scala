@@ -15,12 +15,14 @@ object One {
 
     println("Exercises")
     println("1.3: " + onePointThree(2,3,4))
+    println("square(sqrt()): " + sqrt(square(1000)))
   }
 
   // def <name>(<formal parramaters>): <return type> = <body>
 
   // Compound Procedures
   def square(i: Int): Int = i * i  
+  def cube(i: Int): Int = i * i * i
   def sumOfSquares(a: Int, b: Int): Int = square(a) + square(b)  
   def f(i: Int): Int = sumOfSquares(i+1,i*2)
 
@@ -35,7 +37,7 @@ object One {
 
   def >=(a: Int, b: Int): Boolean = a >= b
 
-  // ---------------- Exercises ----------------
+  // ------------------------------ Exercises ------------------------------
 
   // 1.3 - Define a Procedure that takes three numbers as arguments and returns
   //       the sum  of the squares of the two larger numbers
@@ -47,14 +49,14 @@ object One {
   }
 
   // Square Roots by Newtons Method
-  def average(x: Int, y: Int) = (x + y) / 2
-  def improve(guess: Int, x: Int) = average(guess,(x / guess))
-  def goodEnough(guess: Int, x: Int): Boolean = abs(square(guess) - x) < 0.001
+  def sqrt(x: Int) = sqrtIter(1, x)
   def sqrtIter(guess: Int, x: Int): Int = {
     if (goodEnough(guess,x)) guess
-    else sqrtIter(improve(guess,x),x)
+    else sqrtIter(improveGuess(guess,x),x)
   }
-  def sqrt(x: Int) = sqrtIter(1, x)
+  def goodEnough(guess: Int, x: Int): Boolean = abs(square(guess) - x) < 0.001
+  def improveGuess(guess: Int, x: Int) = average(guess,(x / guess))
+  def average(x: Int, y: Int) = (x + y) / 2
 
   // 1.x - x
   def x() = {
