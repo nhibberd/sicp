@@ -11,11 +11,11 @@ object One {
     println("abs(-5): " + abs(-5))
     println("2 >= 3: " + >=(4,3))
 
-    println("asd: " + sqrt(9))
+    println("sqrt(square(1000): " + sqrt(square(1000)))
+    println("sqrtz(square(1000)): " + sqrtz(square(1000)))
 
     println("Exercises")
     println("1.3: " + onePointThree(2,3,4))
-    println("square(sqrt()): " + sqrt(square(1000)))
   }
 
   // def <name>(<formal parramaters>): <return type> = <body>
@@ -36,6 +36,36 @@ object One {
   }  
 
   def >=(a: Int, b: Int): Boolean = a >= b
+  def average(x: Int, y: Int) = (x + y) / 2
+
+  // Procedures as Black-box Abstractions
+  // --
+
+
+
+  // Square Roots by Newtons Method
+  def sqrt(x: Int) = sqrtIter(1, x)
+  def sqrtIter(guess: Int, x: Int): Int = {
+    if (goodEnough(guess,x)) guess
+    else sqrtIter(improveGuess(guess,x),x)
+  }
+  def goodEnough(guess: Int, x: Int): Boolean = abs(square(guess) - x) < 0.001
+  def improveGuess(guess: Int, x: Int) = average(guess,(x / guess))
+  
+  // Block Structure - lexical scoping  
+  def sqrtz(x: Int) = {
+    def goodEnoughz(guess: Int): Boolean = abs(square(guess) - x) < 0.001
+    def improveGuessz(guess: Int) = average(guess,(x / guess))
+    def sqrtIterz(guess: Int): Int = {
+      if (goodEnoughz(guess)) guess
+      else sqrtIterz(improveGuessz(guess))
+    }
+    sqrtIter(1, x)
+  }
+
+
+
+
 
   // ------------------------------ Exercises ------------------------------
 
@@ -47,16 +77,6 @@ object One {
                   else (b,c)
     sumOfSquares(x,y)    
   }
-
-  // Square Roots by Newtons Method
-  def sqrt(x: Int) = sqrtIter(1, x)
-  def sqrtIter(guess: Int, x: Int): Int = {
-    if (goodEnough(guess,x)) guess
-    else sqrtIter(improveGuess(guess,x),x)
-  }
-  def goodEnough(guess: Int, x: Int): Boolean = abs(square(guess) - x) < 0.001
-  def improveGuess(guess: Int, x: Int) = average(guess,(x / guess))
-  def average(x: Int, y: Int) = (x + y) / 2
 
   // 1.x - x
   def x() = {
