@@ -71,11 +71,24 @@ object Exercises {
   // 1.16 - Design a iterative exponentiation process that uses successive
   //        squaring and uses a logarithmic number of steps
   //        NB: (b ^ n/2)^2 = (b^2)^n/2
-def expt(base: Int, exponent: Int)= {
-  def x(base: Int, exponent: Int, state: Int): Int = {
-    error("")
+  def expt(base: Int, exponent: Int)= {
+    def x(base: Int, exponent: Int, state: Int): Int = {
+      error("")
+    }
+    x(base,exponent,1)
   }
-  x(base,exponent,1)
-}
+
+  // 1.17 - Design a multiplications procedure analogous to fast-expt that
+  //        uses a logarithmic number of steps
+  //        addition(), double(), halve()
+  def *(a: Int, b: Int)= {
+    error("")
+    /*
+      a * b = a * 2 * halve(b)
+      a * b = a * 0.5 * double(b)
+
+    */
+
+  }
 
 }
